@@ -52,4 +52,4 @@ while True:
         else:
             error
     except:
-        print("Numero invalido!")
+        print("somente será aceito o número 1 e 2!")
