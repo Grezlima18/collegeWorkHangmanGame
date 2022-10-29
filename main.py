@@ -25,7 +25,8 @@ print("Quantidade de digitos da palavra:")
 print(converteAsterisco)
 
 
-tentativas = 0
+totalDeDicas = 0
+totalDeTentativas = 6
 while True:
     print("{}, qual opção deseja realizar?" .format(competidor))
     print("> Digite 1 para solicitar uma dica!")
@@ -36,30 +37,28 @@ while True:
 
 
         if escolha == 1:
-            if tentativas == 0:
+            if totalDeDicas == 0:
                 print("Sua primeira dica é:", todasAsDicas[0])
-                tentativas += 1
-            elif tentativas == 1:
+                totalDeDicas += 1
+            elif totalDeDicas == 1:
                 print ("Sua segunda dica é:", todasAsDicas[1])
-                tentativas  += 1
-            elif tentativas == 2:
+                totalDeDicas  += 1
+            elif totalDeDicas == 2:
                 print("Sua terceira e última dica é:", todasAsDicas[2])
-                tentativas += 1
+                totalDeDicas += 1
             else:
                 print("Você não tem mais direito a dicas!")
         
         
         elif escolha == 2:
             print("Certo, qual letra você escolhe?")
-            
-            try:
-                letraEscolhida = input()
-                if lerPalavra(letraEscolhida) == 1:
-                    chequ
-                    
-            except:
-                error
-                
+            print("Você ainda tem {}" .format(totalDeTentativas))
+            letraEscolhida = input(">> ")
+
+            if letraEscolhida in palavra:
+                print(palavra.index(letraEscolhida))
+                input()
+
         elif escolha == 3:
             break
 
