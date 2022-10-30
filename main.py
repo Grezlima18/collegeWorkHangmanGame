@@ -36,6 +36,10 @@ while True:
     print("> Digite 2 para chutar uma letra!")
     print("> Digite 3 para começar novamente!")
     
+    if palavraEmAsterisco == list(palavra):
+        print("Parabéns! {} descobriu a palavra e venceu o jogo!" .format(competidor))
+        break
+
     try:
         escolha = int(input())
 
@@ -74,11 +78,9 @@ while True:
                 if totalDeTentativas == 0:
                     print("{} venceu a partida! A palavra era {}" .format(desafiante, palavra))
                     break
-            
+
             else:
                 print("Somente é aceito letras! Não é possível chutar a palavra ou digitar mais de uma letra por vez!")
-            
-
 
         elif escolha == 3:
             break
