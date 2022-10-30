@@ -1,4 +1,4 @@
-from funcoes import limparTela, lerPalavra, convertePalavra
+from funcoes import limparTela, lerPalavra, convertePalavra, acheOsIndiceis
 
 competidor=input("Insira o nome do competidor: ")
 desafiante=input("insira o nome do desafiante: ")
@@ -29,7 +29,7 @@ totalDeDicas = 0
 totalDeTentativas = 6
 
 while True:
-    print("Palavra escolhida pelo {}:" .format(desafiante))
+    print("Palavra escolhida por {}:" .format(desafiante))
     print(palavraEmAsterisco)
     print("{}, qual opção deseja realizar?" .format(competidor))
     print("> Digite 1 para solicitar uma dica!")
@@ -68,8 +68,11 @@ while True:
             letrasChutas.append(letraEscolhida)
 
             if letraEscolhida in palavra and len(letraEscolhida) == 1:
-                posicaoDaLetraCerta = palavra.index(letraEscolhida)
-                palavraEmAsterisco[posicaoDaLetraCerta] = letraEscolhida
+                posicaoDaLetraCerta = [i for i,val in enumerate(palavra) if val==letraEscolhida]
+                contador = 0
+                while contador < len(posicaoDaLetraCerta):
+                    palavraEmAsterisco[posicaoDaLetraCerta[contador]] = letraEscolhida
+                    contador += 1
 
             elif letraEscolhida not in palavra and len(letraEscolhida) == 1:
                 totalDeTentativas -= 1
