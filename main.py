@@ -52,12 +52,19 @@ while True:
         
         elif escolha == 2:
             print("Certo, qual letra você escolhe?")
-            print("Você ainda tem {}" .format(totalDeTentativas))
+            print("Você ainda tem {} tentativas" .format(totalDeTentativas))
             letraEscolhida = input(">> ")
 
-            if letraEscolhida in palavra:
+            if letraEscolhida in palavra and len(letraEscolhida) == 1:
                 print(palavra.index(letraEscolhida))
                 input()
+            elif letraEscolhida not in palavra and len(letraEscolhida) == 1:
+                totalDeTentativas -= 1
+                print("Você errou! Restam apenas {} tentativas" .format(totalDeTentativas))
+            else:
+                print("Somente é aceito letras! Não é possível chutar a palavra ou digitar mais de uma letra por vez!")
+            
+
 
         elif escolha == 3:
             break
