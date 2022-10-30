@@ -10,3 +10,6 @@ def lerPalavra(tamanho):
 def convertePalavra(palavra):
     palavra.upper()
     return palavra
+
+def pulaLinha():
+    print("\n")

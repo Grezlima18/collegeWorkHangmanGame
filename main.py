@@ -1,4 +1,4 @@
-from funcoes import limparTela, lerPalavra, convertePalavra, acheOsIndiceis
+from funcoes import limparTela, lerPalavra, convertePalavra,pulaLinha
 
 competidor=input("Insira o nome do competidor: ")
 desafiante=input("insira o nome do desafiante: ")
@@ -21,6 +21,7 @@ todasAsDicas.append(dica3)
 limparTela()
 
 palavraEmAsterisco = []
+letrasErradas = []
 
 for i in range(0,tamanhoPalavra):
     palavraEmAsterisco.append("*")
@@ -30,7 +31,9 @@ totalDeTentativas = 6
 
 while True:
     print("Palavra escolhida por {}:" .format(desafiante))
+    pulaLinha()
     print(palavraEmAsterisco)
+    pulaLinha()
     print("{}, qual opção deseja realizar?" .format(competidor))
     print("> Digite 1 para solicitar uma dica!")
     print("> Digite 2 para chutar uma letra!")
@@ -61,22 +64,29 @@ while True:
         
         
         elif escolha == 2:
-            letrasChutas = []
+            letrasChutadas = []
             print("Certo, qual letra você escolhe?")
             print("Você ainda tem {} tentativas" .format(totalDeTentativas))
             letraEscolhida = input(">> ").upper()
-            letrasChutas.append(letraEscolhida)
+            letrasChutadas.append(letraEscolhida)
 
             if letraEscolhida in palavra and len(letraEscolhida) == 1:
                 posicaoDaLetraCerta = [i for i,val in enumerate(palavra) if val==letraEscolhida]
                 contador = 0
+
                 while contador < len(posicaoDaLetraCerta):
                     palavraEmAsterisco[posicaoDaLetraCerta[contador]] = letraEscolhida
                     contador += 1
 
             elif letraEscolhida not in palavra and len(letraEscolhida) == 1:
-                totalDeTentativas -= 1
-                print("Você errou! Restam apenas {} tentativas" .format(totalDeTentativas))
+                
+                if letraEscolhida in letrasErradas:
+                    print("Você já chutou essa letra! Insira uma letra não utilizada!")
+                    
+                else:
+                    letrasErradas.append(letraEscolhida)
+                    totalDeTentativas -= 1
+                    print("Você errou! Restam apenas {} tentativas" .format(totalDeTentativas))
                 
                 if totalDeTentativas == 0:
                     print("{} venceu a partida! A palavra era {}" .format(desafiante, palavra))
