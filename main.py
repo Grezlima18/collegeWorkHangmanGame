@@ -22,6 +22,7 @@ limparTela()
 
 palavraEmAsterisco = []
 letrasErradas = []
+palavrasErradas = []
 
 for i in range(0,tamanhoPalavra):
     palavraEmAsterisco.append("*")
@@ -35,9 +36,10 @@ while True:
     print(palavraEmAsterisco)
     pulaLinha()
     print("{}, qual opção deseja realizar?" .format(competidor))
-    print("> Digite 1 para solicitar uma dica!")
-    print("> Digite 2 para chutar uma letra!")
-    print("> Digite 3 para começar novamente!")
+    print("> Digite 1 para solicitar uma DICA!")
+    print("> Digite 2 para chutar uma LETRA!")
+    print("> Digite 3 para chuta a PALAVRA!")
+    print("> Digite 4 SAIR do jogo!")
     
     if palavraEmAsterisco == list(palavra):
         print("Parabéns! {} descobriu a palavra e venceu o jogo!" .format(competidor))
@@ -74,12 +76,14 @@ while True:
                 posicaoDaLetraCerta = [i for i,val in enumerate(palavra) if val==letraEscolhida]
                 contador = 0
 
+                if letraEscolhida in palavraEmAsterisco:
+                    print("Você já chutou essa letra! Insira uma letra não utilizada!")
+
                 while contador < len(posicaoDaLetraCerta):
                     palavraEmAsterisco[posicaoDaLetraCerta[contador]] = letraEscolhida
                     contador += 1
 
             elif letraEscolhida not in palavra and len(letraEscolhida) == 1:
-                
                 if letraEscolhida in letrasErradas:
                     print("Você já chutou essa letra! Insira uma letra não utilizada!")
                     
@@ -96,6 +100,24 @@ while True:
                 print("Somente é aceito letras! Não é possível chutar a palavra ou digitar mais de uma letra por vez!")
 
         elif escolha == 3:
+            palpite = input("Insira a palavra: ").upper()
+            if palpite == palavra:
+                print("Parabéns! {} descobriu a palavra e venceu o jogo!" .format(competidor))
+                break
+
+            else:
+                while True:
+                    if palpite not in palavrasErradas:
+                        palavrasErradas.append(palpite)
+                        totalDeTentativas -= 1
+                        print("Você errou! Restam apenas {} tentativas" .format(totalDeTentativas))
+                        break
+
+                    else:
+                        print("Você já chutou essa palavra! Insira outra que não tenha utilizado!")
+
+
+        elif escolha == 4:
             break
 
         else:
