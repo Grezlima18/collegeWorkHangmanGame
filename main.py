@@ -4,7 +4,7 @@ competidor=input("Insira o nome do competidor: ")
 desafiante=input("insira o nome do desafiante: ")
 limparTela()
 
-palavra=input("Desafiante insira a palavra chave: ")
+palavra=input("Desafiante insira a palavra chave: ").upper()
 convertePalavra(palavra)
 
 tamanhoPalavra=lerPalavra(palavra)
@@ -53,7 +53,7 @@ while True:
         elif escolha == 2:
             print("Certo, qual letra você escolhe?")
             print("Você ainda tem {} tentativas" .format(totalDeTentativas))
-            letraEscolhida = input(">> ")
+            letraEscolhida = input(">> ").upper()
 
             if letraEscolhida in palavra and len(letraEscolhida) == 1:
                 print(palavra.index(letraEscolhida))
@@ -61,6 +61,9 @@ while True:
             elif letraEscolhida not in palavra and len(letraEscolhida) == 1:
                 totalDeTentativas -= 1
                 print("Você errou! Restam apenas {} tentativas" .format(totalDeTentativas))
+                if totalDeTentativas == 0:
+                    print("{} venceu a partida! A palavra era {}" .format(desafiante, palavra))
+                    break
             else:
                 print("Somente é aceito letras! Não é possível chutar a palavra ou digitar mais de uma letra por vez!")
             
