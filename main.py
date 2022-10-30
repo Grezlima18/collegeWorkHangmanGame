@@ -25,13 +25,12 @@ palavraEmAsterisco = []
 for i in range(0,tamanhoPalavra):
     palavraEmAsterisco.append("*")
 
-print("Quantidade de digitos da palavra:")
-print(palavraEmAsterisco)
-
 totalDeDicas = 0
 totalDeTentativas = 6
 
 while True:
+    print("Palavra escolhida pelo {}:" .format(desafiante))
+    print(palavraEmAsterisco)
     print("{}, qual opção deseja realizar?" .format(competidor))
     print("> Digite 1 para solicitar uma dica!")
     print("> Digite 2 para chutar uma letra!")
@@ -65,8 +64,8 @@ while True:
             letrasChutas.append(letraEscolhida)
 
             if letraEscolhida in palavra and len(letraEscolhida) == 1:
-                print(palavra.index(letraEscolhida))
-                input()
+                posicaoDaLetraCerta = palavra.index(letraEscolhida)
+                palavraEmAsterisco[posicaoDaLetraCerta] = letraEscolhida
 
             elif letraEscolhida not in palavra and len(letraEscolhida) == 1:
                 totalDeTentativas -= 1
