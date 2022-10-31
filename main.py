@@ -28,7 +28,7 @@ for i in range(0,tamanhoPalavra):
     palavraEmAsterisco.append("*")
 
 totalDeDicas = 0
-totalDeTentativas = 6
+totalDeTentativas = 5
 
 while True:
     if totalDeTentativas == 0:
