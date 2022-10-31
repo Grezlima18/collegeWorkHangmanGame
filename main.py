@@ -1,4 +1,4 @@
-from funcoes import limparTela, lerPalavra, convertePalavra,pulaLinha
+from funcoes import limparTela, lerPalavra, convertePalavra, pulaLinha, anotaVencedor
 
 competidor=input("Insira o nome do competidor: ")
 desafiante=input("insira o nome do desafiante: ")
@@ -33,6 +33,9 @@ totalDeTentativas = 6
 while True:
     if palavraEmAsterisco == list(palavra):
         print("Parabéns! {} descobriu a palavra e venceu o jogo!" .format(competidor))
+        f = open("vencedores.txt", "a")
+        f.write("\nPalavra: {} – Vencedor: Competidor {}, Perdedor: Desafiante {}".format(palavra,competidor, desafiante))
+        f.close()
         break
 
     pulaLinha()
@@ -43,8 +46,6 @@ while True:
     print("> Digite 2 para chutar uma LETRA!")
     print("> Digite 3 para chuta a PALAVRA!")
     print("> Digite 4 SAIR do jogo!")
-    
-
 
     try:
         escolha = int(input())
@@ -97,6 +98,9 @@ while True:
                 
                 if totalDeTentativas == 0:
                     print("{} venceu a partida! A palavra era {}" .format(desafiante, palavra))
+                    f = open("vencedores.txt", "a")
+                    f.write("\nPalavra: {} – Vencedor: Desafiante {}, Perdedor: Competidor {}".format(palavra, desafiante, competidor))
+                    f.close()
                     break
 
             else:
@@ -104,8 +108,12 @@ while True:
 
         elif escolha == 3:
             palpite = input("Insira a palavra: ").upper()
+
             if palpite == palavra:
                 print("Parabéns! {} descobriu a palavra e venceu o jogo!" .format(competidor))
+                f = open("vencedores.txt", "a")
+                f.write("\nPalavra: {} – Vencedor: Competidor {}, Perdedor: Desafiante {}".format(palavra,competidor, desafiante))
+                f.close()
                 break
 
             else:

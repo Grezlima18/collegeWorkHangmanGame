@@ -13,3 +13,8 @@ def convertePalavra(palavra):
 
 def pulaLinha():
     print("\n")
+
+def anotaVencedor(arquivo, valor):
+    with open("arquivo") as a:
+        a.write(str(valor) + "\n")
+
