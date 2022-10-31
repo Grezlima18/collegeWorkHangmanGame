@@ -31,6 +31,10 @@ totalDeDicas = 0
 totalDeTentativas = 6
 
 while True:
+    if palavraEmAsterisco == list(palavra):
+        print("Parabéns! {} descobriu a palavra e venceu o jogo!" .format(competidor))
+        break
+
     print("Palavra escolhida por {}:" .format(desafiante))
     pulaLinha()
     print(palavraEmAsterisco)
@@ -41,9 +45,7 @@ while True:
     print("> Digite 3 para chuta a PALAVRA!")
     print("> Digite 4 SAIR do jogo!")
     
-    if palavraEmAsterisco == list(palavra):
-        print("Parabéns! {} descobriu a palavra e venceu o jogo!" .format(competidor))
-        break
+
 
     try:
         escolha = int(input())
@@ -115,6 +117,11 @@ while True:
 
                     else:
                         print("Você já chutou essa palavra! Insira outra que não tenha utilizado!")
+                        palpite = input("Insira a palavra: ").upper()
+
+                        if palpite == palavra:
+                            palavraEmAsterisco = list(palavra)
+                            break
 
 
         elif escolha == 4:
