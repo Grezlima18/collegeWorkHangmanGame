@@ -31,6 +31,9 @@ totalDeDicas = 0
 totalDeTentativas = 6
 
 while True:
+    if totalDeTentativas == 0:
+        break
+
     if palavraEmAsterisco == list(palavra):
         print("Parabéns! {} descobriu a palavra e venceu o jogo!" .format(competidor))
         f = open("vencedores.txt", "a")
