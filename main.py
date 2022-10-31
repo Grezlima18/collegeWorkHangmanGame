@@ -35,7 +35,6 @@ while True:
         print("Parabéns! {} descobriu a palavra e venceu o jogo!" .format(competidor))
         break
 
-    print("Palavra escolhida por {}:" .format(desafiante))
     pulaLinha()
     print(palavraEmAsterisco)
     pulaLinha()
@@ -49,6 +48,7 @@ while True:
 
     try:
         escolha = int(input())
+        pulaLinha()
 
         if escolha == 1:
             if totalDeDicas == 0:
@@ -64,6 +64,7 @@ while True:
                 totalDeDicas += 1
             
             else:
+                print("Suas dicas foram: {}, {}, {}" .format(todasAsDicas[0], todasAsDicas[1], todasAsDicas[2]))
                 print("Você não tem mais direito a dicas!")
         
         
